@@ -1,0 +1,47 @@
+.navbar-text
+{
+font-size: 22pt;
+font-family: Georgia;
+text-align: center;
+color: whitesmoke;
+}
+
+.nav-link{
+
+color: whitesmoke;
+
+
+
+}
+
+.rightnav{
+padding-right: 100px;
+
+
+
+
+
+}
+
+.jumbotron {
+	background-image: url('pics/homepic3.jpg.png');
+	background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 5%;
+  padding-bottom: 5%;
+
+}
+
+h5{
+font-size: 16pt;
+}
+
+.card-deck{
+margin-left: 10px;
+margin-right: 10px;
+
+}
+
+
+
+
