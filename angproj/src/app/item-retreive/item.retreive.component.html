@@ -1,0 +1,17 @@
+<div>
+  <input type="button" value="Load Product Details" (click)="loadItemInfo()"/>
+  <div *ngIf="flag">
+          <table border="1">
+                  <tr>
+                      <th>Product Id</th>
+                      <th>Product Name</th>
+                      <th>Product Price</th>
+                  </tr>
+                  <tr *ngFor="let it of items">
+                      <td>{{it._id}}</td>
+                      <td>{{it.name}}</td>
+                      <td>{{it.price}}</td>
+                  </tr>
+          </table>
+  </div>
+</div>
