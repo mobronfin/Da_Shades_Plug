@@ -8,7 +8,7 @@ var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 db.on("error",(err)=>console.log("Error..."+err))
 
-var productInfo=[{pid:" ",pname:" ",price:''}]
+var itemInfo=[{pid:" ",pname:" ",price:''}]
 
 app.get("/items",(req,res)=> {
             res.json(itemInfo);  
@@ -18,7 +18,7 @@ app.get("/fashion",(req,res)=> {
 
             
             var itemSchema = mongoose.Schema({
-                _id:Number,
+                _id:String,
                 name:String,
                 price:Number
             });

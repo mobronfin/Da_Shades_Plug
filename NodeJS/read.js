@@ -9,7 +9,7 @@ db.once("open",function() {
         console.log("Connected...");
         
         var items = mongoose.Schema({
-            _id:Number,
+            _id:String,
             name:String,
             price:Number
         });

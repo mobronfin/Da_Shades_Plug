@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 
-import { item1 } from '../item1';
-import { ItemService } from '../item.service';
+import { Item } from '../Item';
+import { ItemService } from '../ItemService';
 
 @Component({
 	templateUrl: 'cart.component.html'
@@ -11,7 +11,7 @@ import { ItemService } from '../item.service';
 
 export class CartComponent implements OnInit {
 
-	items: item1[] = [];
+	items: Item[] = [];
 	total: number = 0;
 
 	constructor(
@@ -21,10 +21,10 @@ export class CartComponent implements OnInit {
 
 	ngOnInit() {
 		this.activatedRoute.params.subscribe(params => {
-			var id = params['id'];
-			if (id) {
-				var item: item1 = {
-					item1: this.itemService.find(id),
+			var _id = params['_id'];
+			if (_id) {
+				var item: Item = {
+					item: this.itemService.find(_id),
 					quantity: 1
 				};
 
@@ -36,8 +36,8 @@ export class CartComponent implements OnInit {
 					let cart: any = JSON.parse(localStorage.getItem('cart'));
 					let index: number = -1;
 					for (var i = 0; i < cart.length; i++) {
-						let item: item1 = JSON.parse(cart[i]);
-						if (item.item1.id == id) {
+						let item: Item = JSON.parse(cart[i]);
+						if (item.item1._id == _id) {
 							index = i;
 							break;
 						}
@@ -46,7 +46,7 @@ export class CartComponent implements OnInit {
 						cart.push(JSON.stringify(item));
 						localStorage.setItem('cart', JSON.stringify(cart));
 					} else {
-						let item: item1 = JSON.parse(cart[index]);
+						let item: Item = JSON.parse(cart[index]);
 						item.quantity += 1;
 						cart[index] = JSON.stringify(item);
 						localStorage.setItem("cart", JSON.stringify(cart));
@@ -66,10 +66,10 @@ export class CartComponent implements OnInit {
 		for (var i = 0; i < cart.length; i++) {
 			let item = JSON.parse(cart[i]);
 			this.items.push({
-				product: item.product,
+				item1: item.item1,
 				quantity: item.quantity
 			});
-			this.total += item.product.price * item.quantity;
+			this.total += item.item1.price * item.quantity;
 		}
 	}
 
@@ -77,8 +77,8 @@ export class CartComponent implements OnInit {
 		let cart: any = JSON.parse(localStorage.getItem('cart'));
 		let index: number = -1;
 		for (var i = 0; i < cart.length; i++) {
-			let item: item1 = JSON.parse(cart[i]);
-			if (item.product.id == id) {
+			let item: Item = JSON.parse(cart[i]);
+			if (item.item1._id == _id) {
 				cart.splice(i, 1);
 				break;
 			}

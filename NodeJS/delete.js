@@ -8,7 +8,7 @@ db.on("error",(err)=>console.log("Error..."+err))
 db.once("open",function() {
         console.log("Connected...");
         var itemSchema = mongoose.Schema({
-            _id:Number,
+            _id:String,
             name:String,
             price:Number
         });
